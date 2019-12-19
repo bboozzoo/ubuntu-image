@@ -336,7 +336,7 @@ def parse(stream_or_string):
         # It doesn't look like voluptuous gives us the bogus value, but it
         # does give us the path to it.  The str(error) contains some
         # additional information of dubious value, so just use the path.
-        raise GadgetSpecificationError('Invalid gadget.yaml @ {}'.format(path))
+        raise GadgetSpecificationError('Invalid gadget.yaml @ {} reason: {}'.format(path, error.msg))
     device_tree_origin = validated.get('device-tree-origin')
     device_tree = validated.get('device-tree')
     defaults = validated.get('defaults')

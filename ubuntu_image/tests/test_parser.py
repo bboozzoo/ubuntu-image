@@ -351,7 +351,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:size')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:size reason: required key not provided')
 
     def test_bad_hybrid_volume_type_1(self):
         with ExitStack() as resources:
@@ -367,7 +367,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:type')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:type reason: not a valid value')
 
     def test_bad_hybrid_volume_type_2(self):
         with ExitStack() as resources:
@@ -384,7 +384,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:type')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:type reason: not a valid value')
 
     def test_bad_hybrid_volume_type_3(self):
         with ExitStack() as resources:
@@ -400,7 +400,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:type')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:type reason: not a valid value')
 
     def test_bad_hybrid_volume_type_4(self):
         with ExitStack() as resources:
@@ -416,7 +416,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:type')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:type reason: not a valid value')
 
     def test_bad_hybrid_volume_type_5(self):
         with ExitStack() as resources:
@@ -1491,7 +1491,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:type')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:type reason: not a valid value')
 
     def test_bad_bootloader(self):
         with ExitStack() as resources:
@@ -1564,7 +1564,7 @@ volumes:
 device-tree-origin: kernel
 device-tree: dtree
 """)
-        self.assertEqual(str(cm.exception), 'Invalid gadget.yaml @ volumes')
+        self.assertEqual(str(cm.exception), 'Invalid gadget.yaml @ volumes reason: required key not provided')
 
     def test_mixed_offset_conflict(self):
         # Most of the structures have an offset, but one doesn't.  The
@@ -1642,7 +1642,7 @@ volumes:
           size: 400M
 """)
         self.assertEqual(str(cm.exception),
-                         'Invalid gadget.yaml @ volumes:first-image:id')
+                         'Invalid gadget.yaml @ volumes:first-image:id reason: expected Id')
 
     def test_bad_integer_volume_id(self):
         with ExitStack() as resources:
@@ -1659,7 +1659,7 @@ volumes:
           size: 400M
 """)
         self.assertEqual(str(cm.exception),
-                         'Invalid gadget.yaml @ volumes:first-image:id')
+                         'Invalid gadget.yaml @ volumes:first-image:id reason: expected Id')
 
     def test_disallow_hybrid_volume_id(self):
         with ExitStack() as resources:
@@ -1676,7 +1676,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:id')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:id reason: expected UUID')
 
     def test_volume_id_not_guid(self):
         with ExitStack() as resources:
@@ -1694,7 +1694,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:id')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:id reason: expected UUID')
 
     def test_no_structure(self):
         with ExitStack() as resources:
@@ -1707,7 +1707,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure')
+            'Invalid gadget.yaml @ volumes:first-image:structure reason: required key not provided')
 
     def test_volume_offset_write_relative_syntax_error(self):
         with ExitStack() as resources:
@@ -1726,7 +1726,7 @@ volumes:
         self.assertEqual(
             str(cm.exception),
             ('Invalid gadget.yaml @ '
-             'volumes:first-image:structure:0:offset-write'))
+             'volumes:first-image:structure:0:offset-write reason: expected Size32bit'))
 
     def test_volume_offset_write_larger_than_32bit(self):
         with ExitStack() as resources:
@@ -1745,7 +1745,7 @@ volumes:
         self.assertEqual(
             str(cm.exception),
             ('Invalid gadget.yaml @ '
-             'volumes:first-image:structure:0:offset-write'))
+             'volumes:first-image:structure:0:offset-write reason: expected Size32bit'))
 
     def test_volume_offset_write_is_4G(self):
         # 4GiB is just outside 32 bits.
@@ -1765,7 +1765,7 @@ volumes:
         self.assertEqual(
             str(cm.exception),
             ('Invalid gadget.yaml @ '
-             'volumes:first-image:structure:0:offset-write'))
+             'volumes:first-image:structure:0:offset-write reason: expected Size32bit'))
 
     def test_no_size(self):
         with ExitStack() as resources:
@@ -1780,7 +1780,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:size')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:size reason: required key not provided')
 
     def test_bad_hybrid_volume_type_1(self):
         with ExitStack() as resources:
@@ -1796,7 +1796,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:type')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:type reason: not a valid value')
 
     def test_bad_hybrid_volume_type_2(self):
         with ExitStack() as resources:
@@ -1813,7 +1813,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:type')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:type reason: not a valid value')
 
     def test_bad_hybrid_volume_type_3(self):
         with ExitStack() as resources:
@@ -1829,7 +1829,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:type')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:type reason: not a valid value')
 
     def test_bad_hybrid_volume_type_4(self):
         with ExitStack() as resources:
@@ -1845,7 +1845,7 @@ volumes:
 """)
         self.assertEqual(
             str(cm.exception),
-            'Invalid gadget.yaml @ volumes:first-image:structure:0:type')
+            'Invalid gadget.yaml @ volumes:first-image:structure:0:type reason: not a valid value')
 
     def test_bad_hybrid_volume_type_5(self):
         with ExitStack() as resources:
@@ -1897,11 +1897,13 @@ volumes:
             offset-write: 8G
 """)
         # XXX https://github.com/alecthomas/voluptuous/issues/239
-        front, colon, end = str(cm.exception).rpartition(':')
+        pfront, colon, reason = str(cm.exception).rpartition(' reason: ')
+        front, colon, end = str(pfront).rpartition(':')
         self.assertEqual(
             front,
             'Invalid gadget.yaml @ volumes:first-image:structure:0:content:0')
         self.assertIn(end, ['offset-write', 'image'])
+        self.assertEqual(reason, 'extra keys not allowed')
 
     def test_content_spec_b_offset_write_is_4G(self):
         # 4GiB is just outside 32 bits.
@@ -1921,11 +1923,13 @@ volumes:
             offset-write: 4G
 """)
         # XXX https://github.com/alecthomas/voluptuous/issues/239
-        front, colon, end = str(cm.exception).rpartition(':')
+        pfront, colon, reason = str(cm.exception).rpartition(' reason: ')
+        front, colon, end = str(pfront).rpartition(':')
         self.assertEqual(
             front,
             'Invalid gadget.yaml @ volumes:first-image:structure:0:content:0')
         self.assertIn(end, ['offset-write', 'image'])
+        self.assertEqual(reason, 'extra keys not allowed')
 
     def test_wrong_content_1(self):
         with ExitStack() as resources:
@@ -1992,7 +1996,7 @@ volumes:
         self.assertEqual(
             str(cm.exception),
             ('Invalid gadget.yaml @ '
-             'volumes:first-image:structure:0:content:1:image'))
+             'volumes:first-image:structure:0:content:1:image reason: extra keys not allowed'))
 
     def test_content_conflict_2(self):
         with ExitStack() as resources:
@@ -2020,7 +2024,7 @@ volumes:
         self.assertEqual(
             str(cm.exception),
             ('Invalid gadget.yaml @ '
-             'volumes:first-image:structure:0:content:0:image'))
+             'volumes:first-image:structure:0:content:0:image reason: extra keys not allowed'))
 
     def test_parser_format_version_error(self):
         with ExitStack() as resources:
@@ -2141,7 +2145,7 @@ volumes:
           offset: 10
 """.format(name))
             self.assertEqual(str(cm.exception),
-                             'Invalid gadget.yaml @ volumes:{}'.format(name))
+                             'Invalid gadget.yaml @ volumes:{} reason: extra keys not allowed'.format(name))
 
     def test_duplicate_structure_name(self):
         with ExitStack() as resources:
@@ -2180,7 +2184,7 @@ volumes:
             edition: "foo"
 """)
         self.assertEqual(str(cm.exception),
-                         'Invalid gadget.yaml @ volumes:first-image:structure:0:update:edition')
+                         'Invalid gadget.yaml @ volumes:first-image:structure:0:update:edition reason: expected int')
 
     def test_gadget_structure_update_edition_negative(self):
         with ExitStack() as resources:
@@ -2199,7 +2203,7 @@ volumes:
             edition: -1
 """)
         self.assertEqual(str(cm.exception),
-                        'Invalid gadget.yaml @ volumes:first-image:structure:0:update:edition')
+                        'Invalid gadget.yaml @ volumes:first-image:structure:0:update:edition reason: value must be at least 0')
 
     def test_gadget_structure_update_preserve_not_a_list(self):
         with ExitStack() as resources:
@@ -2219,7 +2223,7 @@ volumes:
             preserve: foo
 """)
         self.assertEqual(str(cm.exception),
-                        'Invalid gadget.yaml @ volumes:first-image:structure:0:update:preserve')
+                        'Invalid gadget.yaml @ volumes:first-image:structure:0:update:preserve reason: expected a list')
 
 
 class TestPartOrder(TestCase):
